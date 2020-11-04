@@ -31,4 +31,18 @@
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" />
         <PackageReference Include="System.Net.Http.Json" Version="3.2.1" />
     </ItemGroup>
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Index.razor" />
+      <_ContentIncludedByDefault Remove="Pages\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\Demo\DemoPage.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\Demo\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\ConfirmEmail\ConfirmEmailPage.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\ConfirmEmail\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\ExternalLogin\ExternalLoginPage.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\ExternalLogin\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\Registration\RegistrationPage.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\Registration\_Imports.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\RestoreAccess\RestoreAccessPage.razor" />
+      <_ContentIncludedByDefault Remove="Public\Pages\RestoreAccess\_Imports.razor" />
+    </ItemGroup>
 </Project>
