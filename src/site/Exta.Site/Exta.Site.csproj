@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <PackageId>Exta.Site</PackageId>
+        <PackageVersion>0.1.0</PackageVersion>
+        <Description>Exta.Site</Description>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <OutputType>Exe</OutputType>
+        <DebugType>portable</DebugType>
+        <LangVersion>latest</LangVersion>
+        <WarningsAsErrors>true</WarningsAsErrors>
+        <IsPackable>false</IsPackable>
+        <Nullable>enable</Nullable>
+        <RazorLangVersion>3.0</RazorLangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Annium.Blazor.Ant" Version="0.1.0" />
+        <PackageReference Include="Annium.Blazor.Css" Version="0.1.0" />
+        <PackageReference Include="Annium.Blazor.Net" Version="0.1.0" />
+        <PackageReference Include="Annium.Blazor.Storage" Version="0.1.0" />
+        <PackageReference Include="Annium.Components.State" Version="0.1.0" />
+        <PackageReference Include="Annium.Configuration.Yaml" Version="0.1.0" />
+        <PackageReference Include="Annium.Core.DependencyInjection" Version="0.1.0" />
+        <PackageReference Include="Annium.Core.Mapper" Version="0.1.0" />
+        <PackageReference Include="Annium.Extensions.Validation" Version="0.1.0" />
+        <PackageReference Include="Annium.Localization.InMemory" Version="0.1.0" />
+        <PackageReference Include="Annium.Logging.Console" Version="0.1.0" />
+        <PackageReference Include="Annium.Logging.Microsoft" Version="0.1.0" />
+        <PackageReference Include="Annium.Net.Http" Version="0.1.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" />
+        <PackageReference Include="System.Net.Http.Json" Version="3.2.1" />
+    </ItemGroup>
+</Project>

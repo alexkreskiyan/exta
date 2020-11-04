@@ -1,0 +1,16 @@
+# editors
+.idea/
+.vscode/
+*DotSettings.user
+
+# artifacts
+/run/
+*.blob
+configuration/
+keys/
+
+# xs ignore patterns
+.xs.ignore
+.xs.credentials
+nuget.config
+lcov.info
