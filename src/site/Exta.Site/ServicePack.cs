@@ -15,8 +15,8 @@ namespace Exta.Site
         public override void Register(IServiceCollection services, IServiceProvider provider)
         {
             // core
-            services.AddSingleton<Func<Instant>>(SystemClock.Instance.GetCurrentInstant);
             services.AddRuntimeTools(GetType().Assembly, false);
+            services.AddSingleton<Func<Instant>>(SystemClock.Instance.GetCurrentInstant);
             services.AddMapper();
             services.AddHttpRequestFactory();
             services.AddComponentFormStateFactory();
