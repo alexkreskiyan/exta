@@ -12,40 +12,40 @@
 @inject ILocalizer<Page> T
 
 <PageTitle Class="@Style.Title" Level="2">
-    Exta @T["temp check"]
+    @T["TempCheck.Title"]
 </PageTitle>
 
 <div class="@Style.Form">
+    <h4>@T["TempCheck.DocumentDate"]</h4>
+    <FormField TValue="DateTime" State="@Store.Form.At(x => x.DocumentDate)" Class="@Style.FormItem">
+        <DatePickerField ClassName="@Style.DatePicker" />
+    </FormField>
+    <h4>@T["TempCheck.DocumentNumber"]</h4>
     <FormField TValue="string" State="@Store.Form.At(x => x.DocumentNumber)" Class="@Style.FormItem">
-        <TextField
-            TValue="string"
-            Size="@InputSize.Large"
-            Placeholder="@T["DocumentNumber"]" />
+        <TextField TValue="string" Size="@InputSize.Large" />
     </FormField>
+    <h4>@T["TempCheck.OperationDate"]</h4>
+    <FormField TValue="DateTime" State="@Store.Form.At(x => x.OperationDate)" Class="@Style.FormItem">
+        <DatePickerField ClassName="@Style.DatePicker" />
+    </FormField>
+    <h4>@T["TempCheck.CardNumber"]</h4>
     <FormField TValue="string" State="@Store.Form.At(x => x.CardNumber)" Class="@Style.FormItem">
-        <TextField
-            TValue="string"
-            Size="@InputSize.Large"
-            Placeholder="@T["CardNumber"]" />
+        <TextField TValue="string" Size="@InputSize.Large" />
     </FormField>
+    <h4>@T["TempCheck.Sum"]</h4>
     <FormField TValue="string" State="@Store.Form.At(x => x.Sum)" Class="@Style.FormItem">
-        <TextField
-            TValue="string"
-            Size="@InputSize.Large"
-            Placeholder="@T["Sum"]" />
+        <TextField TValue="string" Size="@InputSize.Large" />
     </FormField>
+    <h4>@T["TempCheck.Payer"]</h4>
     <FormField TValue="string" State="@Store.Form.At(x => x.Payer)" Class="@Style.FormItem">
-        <TextField
-            TValue="string"
-            Size="@InputSize.Large"
-            Placeholder="@T["Payer"]" />
+        <TextField TValue="string" Size="@InputSize.Large" />
     </FormField>
     <Button
         type="primary"
         block
-        disabled="@(!Store.CanPrint)"
+        disabled="@(!Store.CanCreate)"
         size="large"
-        OnClick="@Store.Print">
-        @T["Print"]
+        OnClick="@Store.Create">
+        @T["TempCheck.Create"]
     </Button>
 </div>

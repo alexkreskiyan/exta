@@ -15,5 +15,8 @@ namespace Exta.Site.Public.Pages.TempCheck
             .FontSizeRem(1)
             .MarginBottomRem(0)
             .Inheritor("input", input => input.FontSizeRem(1));
+
+        public CssRule DatePicker { get; } = Rule.Class()
+            .WidthPercent(100);
     }
 }

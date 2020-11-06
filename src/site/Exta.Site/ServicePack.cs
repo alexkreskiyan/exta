@@ -21,7 +21,7 @@ namespace Exta.Site
             services.AddHttpRequestFactory();
             services.AddComponentFormStateFactory();
             services.AddValidation();
-            services.AddLocalization(opts => opts.UseInMemoryStorage());
+            services.AddLocalization(opts => opts.UseInMemoryStorage(Locale.Data));
             services.AddCssRules();
             services.AddHostHttpRequestFactory();
             // services.AddLogging(route => route.UseConsole());
