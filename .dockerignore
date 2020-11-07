@@ -1,0 +1,13 @@
+# ignore all by default
+**
+
+# all sources & tests
+!/.config/
+!/src/
+!/test/
+
+# ignore artifacts
+**/bin/
+**/obj/
+**/configuration/
+**/keys/

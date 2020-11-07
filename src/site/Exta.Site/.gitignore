@@ -4,3 +4,6 @@
 
 # packages
 /*.nupkg
+
+# config
+/wwwroot/site.yml

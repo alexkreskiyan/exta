@@ -1,0 +1,25 @@
+version: '3.7'
+x-base: &base
+  restart: always
+  logging:
+    driver: json-file
+    options:
+      max-size: 1m
+      max-file: '1'
+services:
+  api:
+    <<: *base
+    build:
+      context: .
+      dockerfile: src/api/Exta.Api/app.dockerfile
+    image: exta-api
+    ports:
+      - '8101:5000'
+  site:
+    <<: *base
+    build:
+      context: .
+      dockerfile: src/site/Exta.Site/app.dockerfile
+    image: crypted-site
+    ports:
+      - '8100:80'

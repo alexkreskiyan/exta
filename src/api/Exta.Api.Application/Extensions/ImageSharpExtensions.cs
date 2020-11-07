@@ -15,7 +15,7 @@ namespace Exta.Api.Application.Extensions
 
         private static readonly Color Color = new Rgba32(127, 126, 132);
 
-        private static readonly Font Font = SystemFonts.CreateFont("Open Sans", 28, FontStyle.Regular);
+        private static readonly Font Font = SystemFonts.CreateFont("Arial", 28, FontStyle.Regular);
 
         private static PointF At(int x, int y) => new PointF(x, y);
     }
