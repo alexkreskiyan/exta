@@ -37,9 +37,9 @@ namespace Exta.Site.Public.Pages.TempCheck
             var data = Form.Value;
             var url = UriFactory.Base(_cfg.Server)
                 .Path("/temp-check")
-                .Param(nameof(CheckData.DocumentDate), data.DocumentDate.Date)
+                .Param(nameof(CheckData.DocumentDate), data.DocumentDate.ToString("s"))
                 .Param(nameof(CheckData.DocumentNumber), data.DocumentNumber)
-                .Param(nameof(CheckData.OperationDate), data.OperationDate.Date)
+                .Param(nameof(CheckData.OperationDate), data.OperationDate.ToString("s"))
                 .Param(nameof(CheckData.CardNumber), data.CardNumber)
                 .Param(nameof(CheckData.Sum), data.Sum)
                 .Param(nameof(CheckData.Payer), data.Payer)

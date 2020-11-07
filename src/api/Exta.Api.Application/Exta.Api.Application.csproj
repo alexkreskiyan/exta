@@ -12,9 +12,19 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
+        <ProjectReference Include="../Exta.Domain/Exta.Domain.csproj" />
+    </ItemGroup>
+    <ItemGroup>
         <PackageReference Include="Annium.Architecture.CQRS" Version="0.1.0" />
         <PackageReference Include="Annium.Architecture.Mediator" Version="0.1.0" />
         <PackageReference Include="Annium.Extensions.Validation" Version="0.1.0" />
         <PackageReference Include="Annium.Localization.Yaml" Version="0.1.0" />
+        <PackageReference Include="SixLabors.Fonts" Version="1.0.0-beta0013" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="1.0.1" />
+        <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="1.0.0-beta0010" />
+        <PackageReference Include="SixLabors.Shapes.Text" Version="1.0.0-beta0009" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Resources/**" />
     </ItemGroup>
 </Project>

@@ -1,9 +1,11 @@
 using System;
+using Annium.Architecture.ViewModel;
 using Annium.Extensions.Validation;
+using Exta.Api.Application.Queries.Checks;
 
-namespace Exta.Site.Public.Pages.TempCheck
+namespace Exta.Api.ViewModels.Requests.Checks
 {
-    public class CheckData
+    public class CreateTempCheckRequest : IRequest<CreateTempCheckQuery>
     {
         public DateTime DocumentDate { get; set; }
         public string DocumentNumber { get; set; } = string.Empty;
@@ -13,9 +15,10 @@ namespace Exta.Site.Public.Pages.TempCheck
         public string Payer { get; set; } = string.Empty;
     }
 
-    public class CheckDataValidator : Validator<CheckData>
+    internal class CreateTempCheckRequestValidator : Validator<CreateTempCheckRequest>
     {
-        public CheckDataValidator()
+        public CreateTempCheckRequestValidator(
+        )
         {
             Field(x => x.DocumentDate).Required();
             Field(x => x.DocumentNumber).Required().MinLength(20).MaxLength(30);
