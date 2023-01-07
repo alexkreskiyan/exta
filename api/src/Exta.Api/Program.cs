@@ -1,6 +1,6 @@
 using Annium.Core.DependencyInjection;
-using Microsoft.AspNetCore.Builder;
 using Exta.Api;
+using Microsoft.AspNetCore.Builder;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseServicePack<ServicePack>();
