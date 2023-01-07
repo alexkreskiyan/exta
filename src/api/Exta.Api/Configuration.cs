@@ -2,7 +2,7 @@ using Annium.Core.DependencyInjection;
 
 namespace Exta.Api;
 
-public class HostConfiguration
+public class Configuration
 {
     public WebHostConfiguration Host { get; set; } = new();
 }

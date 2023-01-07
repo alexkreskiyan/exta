@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Immutable;
+using System.IO;
 using System.Linq;
+using Annium.Configuration.Abstractions;
 using Annium.Core.DependencyInjection;
 using Annium.Core.Mediator;
 using Annium.Core.Runtime.Types;
@@ -18,6 +20,9 @@ internal class ServicePack : ServicePackBase
     public override void Configure(IServiceContainer container)
     {
         container.AddRuntime(GetType().Assembly);
+        container.AddConfiguration<Configuration>(x => x
+            .AddYamlFile(Path.Combine("configuration", "api.yml"))
+        );
     }
 
     public override void Register(IServiceContainer container, IServiceProvider provider)
@@ -44,7 +49,6 @@ internal class ServicePack : ServicePackBase
         provider.UseLogging(route => route
             .For(m => !Ignore.Any(m.Source.Contains))
             .UseConsole());
-
     }
 
     private void ConfigureMediator(MediatorConfiguration cfg, ITypeManager tm)
