@@ -21,7 +21,7 @@ internal class ServicePack : ServicePackBase
     {
         container.AddRuntime(GetType().Assembly);
         container.AddConfiguration<Configuration>(x => x
-            .AddYamlFile(Path.Combine("configuration", "api.yml"))
+            .AddYamlFile(Path.Combine("configuration", "host.yml"))
         );
     }
 
