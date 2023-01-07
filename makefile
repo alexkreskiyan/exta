@@ -1,35 +1,50 @@
 PROJECT_NAME := exta
 TAG_PREFIX := registry.annium.com/$(PROJECT_NAME)
-TFM := netcoreapp3.1
+TFM := net7.0
 BIN_DEBUG := bin/Debug/$(TFM)
 
-publish: publish-api publish-site
+configure:
+	@# infrastructure
+	$(call copy,docker,db.env,run/db)
+	$(call copy,local,db.yml,infrastructure/src/Infrastructure.Db.Migrator/configuration)
 
-publish-api:
-	$(call publish,api,.,src/api/Exta.Api/app.dockerfile)
+	@# server
+	$(call copy,docker,db.yml,run/server/configuration)
+	$(call copy,local,db.yml,server/src/Server.Host/configuration)
+	$(call copy,shared,host.yml,run/server/configuration server/src/Server.Host/configuration)
+
+	@# site
+	$(call copy,shared,site.yml,web/src/Site/configuration)
+
+deconfigure:
+	rm -rf run
+	$(call clean,*/src/,/configuration/)
+
+publish: publish-server publish-site
+
+publish-server:
+	$(call publish,server,.,server/src/Server.Host/app.dockerfile)
 
 publish-site:
-	$(call publish,site,.,src/site/Exta.Site/app.dockerfile)
+	$(call publish,site,.,web/src/Site/app.dockerfile)
 
-start-api:
-	$(call start-dotnet,core,Exta.Api,8101)
+# infra targets
 
-stop: stop-api
+migrate:
+	cd server/src/Server.Db.Migrator && dotnet run
 
-stop-api:
-	$(call stop-dotnet,Exta.Api)
+db-drop:
+	docker-compose rm -vfs db
+	docker volume rm -f exta_db
+	docker-compose up -d db
 
 # control
-define start-dotnet
-	@$(eval component := $(1))
-	@$(eval project := $(2))
-	@$(eval port := $(3))
-	cd src/$(component)/$(project) && dotnet $(BIN_DEBUG)/$(project).dll -port $(port) &
+define copy
+	$(foreach dir,$(3),mkdir -p $(dir);$(foreach file,$(2),cp cfg/$(1)/$(file) $(dir);))
 endef
 
-define stop-dotnet
-	@$(eval project := $(1))
-	ps -ax | grep $(project).dll | grep -v src | grep -v grep | sed -e 's#^ *##' | cut -d ' ' -f 1 | xargs -I% kill %
+define clean
+	$(foreach folder,$(1),$(foreach pattern,$(2),git ls-files --others $(folder) | grep $(pattern) | xargs rm -f;))
 endef
 
 define publish
