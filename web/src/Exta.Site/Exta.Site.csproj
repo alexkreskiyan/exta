@@ -12,7 +12,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <ProjectReference Include="../../api/Exta.Domain/Exta.Domain.csproj" />
+        <ProjectReference Include="../../../core/src/Exta.Domain/Exta.Domain.csproj" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Annium.Blazor.Ant" Version="0.1.0" />
