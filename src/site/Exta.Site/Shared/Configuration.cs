@@ -1,9 +1,8 @@
 using System;
 
-namespace Exta.Site.Shared
+namespace Exta.Site.Shared;
+
+public class Configuration
 {
-    public class Configuration
-    {
-        public Uri Server { get; set; } = new Uri("http://localhost");
-    }
+    public Uri Server { get; set; } = new Uri("http://localhost");
 }

@@ -1,7 +1,6 @@
-namespace Exta.Api.Configurations
+namespace Exta.Api.Configurations;
+
+public class HostConfiguration
 {
-    public class HostConfiguration
-    {
-        public int Port { get; set; } = 5000;
-    }
+    public int Port { get; set; } = 5000;
 }

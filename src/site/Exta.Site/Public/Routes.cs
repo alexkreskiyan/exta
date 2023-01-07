@@ -1,8 +1,7 @@
-namespace Exta.Site.Public
+namespace Exta.Site.Public;
+
+public static class Routes
 {
-    public static class Routes
-    {
-        public static readonly string Home = "/";
-        public static readonly string TempCheck = "/temp-check";
-    }
+    public static readonly string Home = "/";
+    public static readonly string TempCheck = "/temp-check";
 }

@@ -1,6 +1,5 @@
-namespace Exta.Site.Shared.Models
+namespace Exta.Site.Shared.Models;
+
+public class TempCheckData
 {
-    public class TempCheckData
-    {
-    }
 }

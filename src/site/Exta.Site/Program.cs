@@ -3,18 +3,17 @@ using Annium.Configuration.Abstractions;
 using Annium.Core.DependencyInjection;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
-namespace Exta.Site
+namespace Exta.Site;
+
+public class Program
 {
-    public class Program
+    public static async Task Main(string[] args)
     {
-        public static async Task Main(string[] args)
-        {
-            var builder = WebAssemblyHostBuilder.CreateDefault(args);
-            builder.RootComponents.Add<App>("app");
-            builder.ConfigureContainer(new ServiceProviderFactory(x => x.UseServicePack<ServicePack>()));
-            await builder.Services.AddConfiguration<Shared.Configuration>(cfg => cfg.AddRemoteYaml($"{builder.HostEnvironment.BaseAddress}site.yml"));
-            // builder.Logging.ConfigureLoggingBridge();
-            await builder.Build().RunAsync();
-        }
+        var builder = WebAssemblyHostBuilder.CreateDefault(args);
+        builder.RootComponents.Add<App>("app");
+        builder.ConfigureContainer(new ServiceProviderFactory(x => x.UseServicePack<ServicePack>()));
+        await builder.Services.AddConfiguration<Shared.Configuration>(cfg => cfg.AddRemoteYaml($"{builder.HostEnvironment.BaseAddress}site.yml"));
+        // builder.Logging.ConfigureLoggingBridge();
+        await builder.Build().RunAsync();
     }
 }
