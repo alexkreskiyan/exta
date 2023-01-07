@@ -3,15 +3,17 @@
         <PackageId>Exta.Site</PackageId>
         <PackageVersion>0.1.0</PackageVersion>
         <Description>Exta.Site</Description>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <OutputType>Exe</OutputType>
         <DebugType>portable</DebugType>
-        <LangVersion>latest</LangVersion>
+        <LangVersion>11.0</LangVersion>
         <WarningsAsErrors>true</WarningsAsErrors>
         <IsPackable>false</IsPackable>
         <Nullable>enable</Nullable>
-        <RazorLangVersion>3.0</RazorLangVersion>
     </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="../../api/Exta.Domain/Exta.Domain.csproj" />
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Annium.Blazor.Ant" Version="0.1.0" />
         <PackageReference Include="Annium.Blazor.Css" Version="0.1.0" />
@@ -26,9 +28,8 @@
         <PackageReference Include="Annium.Logging.Console" Version="0.1.0" />
         <PackageReference Include="Annium.Logging.Microsoft" Version="0.1.0" />
         <PackageReference Include="Annium.Net.Http" Version="0.1.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" />
-        <PackageReference Include="System.Net.Http.Json" Version="3.2.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" />
+        <PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
     </ItemGroup>
 </Project>
