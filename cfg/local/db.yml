@@ -1,0 +1,5 @@
+host: docker.local
+port: 8191
+database: db
+user: dbuser
+password: dbpass

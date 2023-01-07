@@ -7,7 +7,6 @@ using Annium.Architecture.Base;
 using Annium.Architecture.CQRS.Queries;
 using Annium.Core.Runtime.Resources;
 using Annium.Data.Operations;
-using Annium.Logging.Abstractions;
 using Exta.Api.Application.Extensions;
 using Exta.Api.Application.Queries.Checks;
 using Exta.Domain.Models;
@@ -19,15 +18,12 @@ namespace Exta.Api.Application.QueryHandlers;
 public class TempCheckQueryHandler : IQueryHandler<CreateTempCheckQuery, TempCheck>
 {
     private readonly IResourceLoader _resourceLoader;
-    private readonly ILogger<TempCheckQueryHandler> _logger;
 
     public TempCheckQueryHandler(
-        IResourceLoader resourceLoader,
-        ILogger<TempCheckQueryHandler> logger
+        IResourceLoader resourceLoader
     )
     {
         _resourceLoader = resourceLoader;
-        _logger = logger;
     }
 
     public Task<IStatusResult<OperationStatus, TempCheck>> HandleAsync(
@@ -95,6 +91,6 @@ public class TempCheckQueryHandler : IQueryHandler<CreateTempCheckQuery, TempChe
         var check = new TempCheck("image/png", ms.ToArray());
 
         Console.WriteLine("Return result");
-        return Task.FromResult(Result.Status(OperationStatus.OK, check));
+        return Task.FromResult(Result.Status(OperationStatus.Ok, check));
     }
 }

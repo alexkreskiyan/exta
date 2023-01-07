@@ -5,7 +5,6 @@ using Annium.Core.DependencyInjection;
 using Annium.Core.Mediator;
 using Annium.Core.Runtime.Types;
 using Microsoft.Extensions.DependencyInjection;
-using NodaTime;
 
 namespace Exta.Api;
 
@@ -16,24 +15,36 @@ internal class ServicePack : ServicePackBase
         "PipeHandler"
     );
 
-    public override void Configure(IServiceCollection services)
+    public override void Configure(IServiceContainer container)
     {
-        services.AddRuntimeTools(GetType().Assembly, true);
+        container.AddRuntime(GetType().Assembly);
     }
 
-    public override void Register(IServiceCollection services, IServiceProvider provider)
+    public override void Register(IServiceContainer container, IServiceProvider provider)
     {
-        services.AddSingleton<Func<Instant>>(SystemClock.Instance.GetCurrentInstant);
-        services.AddResourceLoader();
-        services.AddLogging(route => route
-            .For(m => !Ignore.Any(m.Source.Name.Contains))
+        container.AddTime().WithRealTime().SetDefault();
+        container.AddResourceLoader();
+        container.AddLogging();
+        container.AddMediator();
+        container.AddMediatorConfiguration(ConfigureMediator);
+        container.AddValidation();
+        container.AddComposition();
+        container.AddLocalization(opts => opts.UseYamlStorage());
+        container.AddMapper();
+
+        // server
+        container.Collection.AddCors();
+        container.Collection.AddControllers()
+            .AddDefaultJsonOptions();
+        container.AddXRest();
+    }
+
+    public override void Setup(IServiceProvider provider)
+    {
+        provider.UseLogging(route => route
+            .For(m => !Ignore.Any(m.Source.Contains))
             .UseConsole());
-        services.AddMediator();
-        services.AddMediatorConfiguration(ConfigureMediator);
-        services.AddValidation();
-        services.AddComposition();
-        services.AddLocalization(opts => opts.UseYamlStorage());
-        services.AddMapper();
+
     }
 
     private void ConfigureMediator(MediatorConfiguration cfg, ITypeManager tm)

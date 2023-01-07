@@ -2,7 +2,7 @@ using Annium.Blazor.Css;
 
 namespace Exta.Site.Public.Pages.TempCheck;
 
-public class Style : IRuleSet
+public class Style : RuleSet
 {
     public CssRule Title { get; } = Rule.Class()
         .MarginTopRem(1);

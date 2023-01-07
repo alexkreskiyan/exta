@@ -2,7 +2,7 @@ using Annium.Blazor.Css;
 
 namespace Exta.Site.Shared;
 
-public class Style : IRuleSet
+public class Style : RuleSet
 {
     private readonly CssRule _html;
 

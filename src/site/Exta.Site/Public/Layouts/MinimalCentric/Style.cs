@@ -2,7 +2,7 @@ using Annium.Blazor.Css;
 
 namespace Exta.Site.Public.Layouts.MinimalCentric;
 
-public class Style : IRuleSet
+public class Style : RuleSet
 {
     public readonly CssRule Column;
 

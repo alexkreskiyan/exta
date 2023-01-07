@@ -2,7 +2,7 @@ using Annium.Blazor.Css;
 
 namespace Exta.Site.Shared.Components.PageTitle;
 
-public class Style : IRuleSet
+public class Style : RuleSet
 {
     public CssRule Title { get; }
 

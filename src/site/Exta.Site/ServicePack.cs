@@ -1,41 +1,35 @@
 using System;
-using Annium.Blazor.Css;
-using Annium.Blazor.Net;
 using Annium.Core.DependencyInjection;
-using Annium.Core.Runtime.Types;
-using Annium.Serialization.Json;
-using Microsoft.Extensions.DependencyInjection;
-using NodaTime;
-using NodaTime.Xml;
 
 namespace Exta.Site;
 
 public class ServicePack : ServicePackBase
 {
-    public override void Register(IServiceCollection services, IServiceProvider provider)
+    public override void Register(IServiceContainer container, IServiceProvider provider)
     {
         // core
-        services.AddRuntimeTools(GetType().Assembly, false);
-        services.AddSingleton<Func<Instant>>(SystemClock.Instance.GetCurrentInstant);
-        services.AddMapper();
-        services.AddHttpRequestFactory();
-        services.AddComponentFormStateFactory();
-        services.AddValidation();
-        services.AddLocalization(opts => opts.UseInMemoryStorage(Locale.Data));
-        services.AddCssRules();
-        services.AddHostHttpRequestFactory();
+        container.AddRuntime(GetType().Assembly);
+        container.AddTime().WithRealTime().SetDefault();
+        container.AddMapper();
+        container.AddHttpRequestFactory();
+        container.AddComponentFormStateFactory();
+        container.AddValidation();
+        container.AddLocalization(opts => opts.UseInMemoryStorage(Locale.Data));
+        container.AddCss();
+        container.AddHostHttpRequestFactory();
         // services.AddLogging(route => route.UseConsole());
 
         // app
-        services.AddAntDesign();
-        services.AddSingleton(sp => StringSerializer.Configure(
-            options => options
-                .ConfigureDefault(sp.GetRequiredService<ITypeManager>())
-                .ConfigureForOperations()
-                .ConfigureForNodaTime(XmlSerializationSettings.DateTimeZoneProvider)
-        ));
-        services.AddSingleton<Theme>();
-        services.AddStorages();
-        services.AddApiServices();
+        container.AddAntDesign();
+        container.AddSerializers()
+            .WithJson(opts =>
+            {
+                opts.ConfigureForOperations();
+                opts.ConfigureForNodaTime();
+                opts.UseCamelCaseNamingPolicy();
+            }, isDefault: true);
+        container.Add<Theme>().AsSelf().Singleton();
+        container.AddStorages();
+        container.AddApiServices();
     }
 }

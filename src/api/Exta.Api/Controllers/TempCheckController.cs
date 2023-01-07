@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Annium.AspNetCore.Extensions;
 using Annium.Core.Mediator;
@@ -11,8 +12,9 @@ namespace Exta.Api.Controllers;
 public class TempCheckController : ServerController
 {
     public TempCheckController(
-        IMediator mediator
-    ) : base(mediator)
+        IMediator mediator,
+        IServiceProvider sp
+    ) : base(mediator, sp)
     {
     }
 
