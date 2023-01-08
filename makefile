@@ -6,7 +6,7 @@ BIN_DEBUG := bin/Debug/$(TFM)
 configure:
 	@# infrastructure
 	$(call copy,docker,db.env,run/db)
-	$(call copy,local,db.yml,infrastructure/src/Infrastructure.Db.Migrator/configuration)
+	$(call copy,local,db.yml,server/src/Server.Db.Migrator/configuration)
 
 	@# server
 	$(call copy,docker,db.yml,run/server/configuration)
