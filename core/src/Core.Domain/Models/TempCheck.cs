@@ -1,16 +1,3 @@
 namespace Core.Domain.Models;
 
-public class TempCheck
-{
-    public string ContentType { get; }
-    public byte[] Data { get; }
-
-    public TempCheck(
-        string contentType,
-        byte[] data
-    )
-    {
-        ContentType = contentType;
-        Data = data;
-    }
-}
+public sealed record TempCheck(string ContentType, byte[] Data);
