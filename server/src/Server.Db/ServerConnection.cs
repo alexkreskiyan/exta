@@ -8,7 +8,7 @@ namespace Server.Db;
 public class ServerConnection : DataConnectionBase, ILogSubject<ServerConnection>
 {
     public ILogger<ServerConnection> Logger { get; }
-    public ITable<Account> Accounts { get; }
+    public ITable<User> Users { get; }
 
     public ServerConnection(
         Config<ServerConnection> config,
@@ -16,6 +16,6 @@ public class ServerConnection : DataConnectionBase, ILogSubject<ServerConnection
     ) : base(config.Options)
     {
         Logger = logger;
-        Accounts = this.GetTable<Account>();
+        Users = this.GetTable<User>();
     }
 }
