@@ -1,31 +1,18 @@
-using System;
-using Annium.Architecture.CQRS.Queries;
+using Annium.Extensions.Validation;
+using Server.Domain.Queries.Checks;
 
 namespace Server.Application.Queries.Checks;
 
-public class CreateTempCheckQuery : IQuery
+internal class CreateTempCheckQueryValidator : Validator<CreateTempCheckQuery>
 {
-    public DateTime DocumentDate { get; }
-    public string DocumentNumber { get; }
-    public DateTime OperationDate { get; }
-    public int CardNumber { get; }
-    public int Sum { get; }
-    public string Payer { get; }
-
-    public CreateTempCheckQuery(
-        DateTime documentDate,
-        string documentNumber,
-        DateTime operationDate,
-        int cardNumber,
-        int sum,
-        string payer
+    public CreateTempCheckQueryValidator(
     )
     {
-        DocumentDate = documentDate;
-        DocumentNumber = documentNumber;
-        OperationDate = operationDate;
-        CardNumber = cardNumber;
-        Sum = sum;
-        Payer = payer;
+        Field(x => x.DocumentDate).Required();
+        Field(x => x.DocumentNumber).Required().MinLength(20).MaxLength(30);
+        Field(x => x.OperationDate).Required();
+        Field(x => x.CardNumber).Required().Between(1000, 9999);
+        Field(x => x.Sum).Required();
+        Field(x => x.Payer).Required().Length(15, 100);
     }
 }

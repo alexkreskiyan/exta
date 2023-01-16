@@ -12,7 +12,7 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Annium.NodaTime.Serialization.Json" Version="0.1.0" />
+        <PackageReference Include="Annium.Core.Runtime" Version="0.1.0" />
         <PackageReference Include="Annium.Serialization.Abstractions" Version="0.1.0" />
     </ItemGroup>
 </Project>

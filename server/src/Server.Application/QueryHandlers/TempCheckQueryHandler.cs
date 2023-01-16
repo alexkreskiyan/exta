@@ -9,7 +9,7 @@ using Annium.Core.Runtime.Resources;
 using Annium.Data.Operations;
 using Core.Domain.Models;
 using Server.Application.Extensions;
-using Server.Application.Queries.Checks;
+using Server.Domain.Queries.Checks;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 
